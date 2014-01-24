@@ -1,0 +1,392 @@
+/*
+Author: Victor Matos
+Purpose: To create a mouse based minigame using Kirby to practice my understanding of collisions and arrays.
+This was written specifically for Processing in java code.
+
+DISCLAIMER: The art or images in the game are not mine. They were obtained through google images.
+I was only responsible for the coding of the game.
+*/
+
+class Kirby{
+//Class Variables
+
+PImage Kirby;
+float Kirbyx;
+float Kirbyy;
+
+//Constructor
+Kirby(){
+Kirby = loadImage("Kirby.png");
+
+Kirbyx = 330;
+Kirbyy = width/2.0;
+Kirby.resize(171,124);
+  }
+
+//Member Functions  
+void update()
+{
+ Kirbyy = mouseY-62; 
+ image(Kirby,Kirbyx,Kirbyy);
+}
+}
+class Pie
+{
+//member variables
+PImage Pie;
+int maxPie;
+float piex;
+float piey;
+float pieRotSpd=0.01;
+float pieAngle;
+//constructors
+Pie()
+{
+
+  maxPie = 8;
+  pieAngle = 0;
+  Pie= loadImage("pie.png");
+  Pie.resize(60, 41);
+  piex = -Pie.width;
+  piey = random(Pie.height,height-Pie.height);
+}
+Pie(float x)
+{
+  maxPie = 8;
+  pieAngle = 0;
+  Pie= loadImage("pie.png");
+  Pie.resize(60, 41);
+  piex = x;
+  piey = random(Pie.height,height-Pie.height);
+}
+//member functions
+void update()
+{
+  
+ pushMatrix();
+  translate(piex+30,piey+20);
+  rotate(pieAngle);
+  image(Pie,-30,-20);
+  popMatrix();
+  
+  pieAngle += pieRotSpd;
+ 
+  piex+=3;
+  
+  
+}
+void pieShrink()
+{
+  //Pie.resize(
+  
+}
+
+}
+
+class Spikeball
+{
+//Member variables
+
+PImage Spikeball;
+int maxSpikeball;
+float spikeballx;
+float spikebally;
+float spikeballRotSpd=0.01;
+float spikeballAngle;
+//Constructors
+
+Spikeball()
+{
+
+  maxSpikeball = 8;
+  spikeballAngle = 0;
+  Spikeball= loadImage("Spikeball.png");
+  Spikeball.resize(100, 100);
+  spikeballx = -Spikeball.width;
+  spikebally = random(Spikeball.height,height-Spikeball.height);
+}
+Spikeball(float x)
+{
+  maxSpikeball = 8;
+  spikeballAngle = 0;
+  Spikeball= loadImage("Spikeball.png");
+  Spikeball.resize(125, 125);
+  spikeballx = x;
+  spikebally = random(Spikeball.height,height-Spikeball.height);
+}
+//Member Functions
+void update()
+{
+  
+ pushMatrix();
+  translate(spikeballx+50,spikebally+50);
+  rotate(spikeballAngle);
+  image(Spikeball,-50,-50);
+  popMatrix();
+  
+  spikeballAngle += spikeballRotSpd;
+ 
+  spikeballx+=3;
+  
+  
+}
+
+}
+
+Kirby k;
+//Pie[] p;
+Pie p1;
+Pie p2;
+Pie p3;
+Pie p4;
+Pie p5;
+Pie p6;
+Pie p7;
+
+Spikeball s1;
+Spikeball s2;
+Spikeball s3;
+Spikeball s4;
+Spikeball s5;
+
+int score;
+int hearts = 5;
+PImage Background;
+PImage Gameover;
+
+void setup(){
+Background = loadImage("Background.png");  
+
+Gameover = loadImage("Gameover.png");
+size(500,500);
+k = new Kirby();
+p1 = new Pie(-100);
+p2 = new Pie(-200);
+p3 = new Pie(-300);
+p4 = new Pie(-400);
+p5 = new Pie(-500);
+p6 = new Pie(-600);
+p7 = new Pie(-700);
+
+s1= new Spikeball(-250);
+s2= new Spikeball(-500);
+s3= new Spikeball(-1000);
+s4= new Spikeball(-5000);
+s5= new Spikeball(-10000);
+
+/*Pie[] p = new Pie[8];
+for(int i = 0; i < p.length; i++)
+p[i] = new Pie(-i*100);
+*/
+
+
+}
+
+void draw(){
+
+background(Background);
+fill(0);
+textSize(20);
+text("Score: " + score, 50,50);
+//if(millis() > 2000)
+//rect(0,0,width,height);
+k.update();
+p1.update();
+p2.update();
+p3.update();
+p4.update();
+p5.update();
+p6.update();
+p7.update();
+
+s1.update();
+s2.update();
+s3.update();
+s4.update();
+s5.update();
+
+
+
+
+if(p1.piex >width+p1.Pie.width)
+{
+p1.piex= random(-500,-100);
+p1.piey=random(p1.Pie.height,height-p1.Pie.height);
+}
+if(p2.piex >width+p2.Pie.width){
+p2.piex= random(-500,-100);
+p2.piey=random(p2.Pie.height,height-p2.Pie.height);
+}
+if(p3.piex >width+p3.Pie.width){
+p3.piex= random(-500,-100);
+p3.piey=random(p3.Pie.height,height-p3.Pie.height);
+}
+if(p4.piex >width+p4.Pie.width){
+p4.piex= random(-500,-100);
+p4.piey=random(p4.Pie.height,height-p4.Pie.height);
+}
+if(p5.piex >width+p5.Pie.width){
+p5.piex= random(-500,-100);
+p5.piey=random(p5.Pie.height,height-p5.Pie.height);
+}
+if(p6.piex >width+p6.Pie.width){
+p6.piex= random(-500,-100);
+p6.piey=random(p6.Pie.height,height-p6.Pie.height);
+}
+if(p7.piex >width+p7.Pie.width){
+p7.piex= random(-500,-100);
+p7.piey=random(p7.Pie.height,height-p7.Pie.height);
+}
+//p[3].update();
+
+if((p1.piex > 360 && p1.piex < 420) && (p1.piey >k.Kirbyy && p1.piey <k.Kirbyy +90 ))
+{
+p1.piex = random(-500,-100);
+p1.piey = random(p1.Pie.height,height-p1.Pie.height);
+if(hearts > 0)
+score++;
+
+}
+
+if((p2.piex > 360 && p2.piex < 420) && (p2.piey >k.Kirbyy && p2.piey <k.Kirbyy +90 ))
+{
+p2.piex = random(-500,-100);
+p2.piey = random(p2.Pie.height,height-p2.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if((p3.piex > 360 && p3.piex < 420) && (p3.piey >k.Kirbyy && p3.piey <k.Kirbyy +90 ))
+{
+p3.piex = random(-500,-100);
+p3.piey = random(p3.Pie.height,height-p3.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if((p4.piex > 360 && p4.piex < 420) && (p4.piey >k.Kirbyy && p4.piey <k.Kirbyy +90 ))
+{
+p4.piex = random(-500,-100);
+p4.piey = random(p4.Pie.height,height-p4.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if((p5.piex > 360 && p5.piex < 420) && (p5.piey >k.Kirbyy && p5.piey <k.Kirbyy +90 ))
+{
+p5.piex = random(-500,-100);
+p5.piey = random(p5.Pie.height,height-p5.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if((p6.piex > 360 && p6.piex < 420) && (p6.piey >k.Kirbyy && p6.piey <k.Kirbyy +90 ))
+{
+p6.piex = random(-500,-100);
+p6.piey = random(p6.Pie.height,height-p6.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if((p7.piex > 360 && p7.piex < 420) && (p7.piey >k.Kirbyy && p7.piey <k.Kirbyy +90 ))
+{
+p7.piex = random(-500,-100);
+p7.piey = random(p7.Pie.height,height-p7.Pie.height);
+if(hearts > 0)
+score++;
+}
+
+if(s1.spikeballx >width+s1.Spikeball.width)
+{
+s1.spikeballx= random(-500,-100);
+s1.spikebally=random(s1.Spikeball.height,height-s1.Spikeball.height);
+}
+
+if(s2.spikeballx >width+s2.Spikeball.width)
+{
+s2.spikeballx= random(-500,-100);
+s2.spikebally=random(s2.Spikeball.height,height-s2.Spikeball.height);
+}
+
+if(s3.spikeballx >width+s3.Spikeball.width)
+{
+s3.spikeballx= random(-500,-100);
+s3.spikebally=random(s3.Spikeball.height,height-s3.Spikeball.height);
+}
+
+if(s4.spikeballx >width+s4.Spikeball.width)
+{
+s4.spikeballx= random(-500,-100);
+s4.spikebally=random(s4.Spikeball.height,height-s4.Spikeball.height);
+}
+
+if(s5.spikeballx >width+s5.Spikeball.width)
+{
+s5.spikeballx= random(-500,-100);
+s5.spikebally=random(s5.Spikeball.height,height-s5.Spikeball.height);
+}
+
+if((s1.spikeballx > 340 && s1.spikeballx < 420) && (s1.spikebally > k.Kirbyy -50 && s1.spikebally <k.Kirbyy +100 ))
+{
+s1.spikeballx = random(-500,-100);
+s1.spikebally = random(s1.Spikeball.height,height-s1.Spikeball.height);
+
+hearts--;
+}
+
+if((s2.spikeballx > 340 && s2.spikeballx < 420) && (s2.spikebally > k.Kirbyy -50 && s2.spikebally <k.Kirbyy +100 ))
+{
+s2.spikeballx = random(-500,-100);
+s2.spikebally = random(s2.Spikeball.height,height-s2.Spikeball.height);
+
+hearts--;
+}
+
+if((s3.spikeballx > 340 && s3.spikeballx < 420) && (s3.spikebally > k.Kirbyy -50 && s3.spikebally <k.Kirbyy +100 ))
+
+{
+s3.spikeballx = random(-500,-100);
+s3.spikebally = random(s3.Spikeball.height,height-s3.Spikeball.height);
+
+hearts--;
+}
+
+if((s4.spikeballx > 340 && s4.spikeballx < 420) && (s4.spikebally > k.Kirbyy -50 && s4.spikebally <k.Kirbyy +100 ))
+
+{
+s4.spikeballx = random(-500,-100);
+s4.spikebally = random(s4.Spikeball.height,height-s4.Spikeball.height);
+
+hearts--;
+}
+
+if((s5.spikeballx > 340 && s5.spikeballx < 420) && (s5.spikebally > k.Kirbyy -50 && s5.spikebally <k.Kirbyy +100 ))
+
+{
+s5.spikeballx = random(-500,-100);
+s5.spikebally = random(s5.Spikeball.height,height-s5.Spikeball.height);
+
+hearts--;
+
+
+}
+fill(255,100,100);
+rect(width-width/2.5, height-height/10,175,20);
+fill(255,60,60);
+rect(width-width/2.5, height-height/10,hearts*35,20);
+
+if(hearts <= 0)
+{
+  
+ fill(255);
+ image(Gameover,0,0);
+ textSize(40);
+ text("Score: " + score, 140,200);
+
+ textSize(60);
+ text("Gameover", 85,100);
+ 
+  
+  
+}
+}
