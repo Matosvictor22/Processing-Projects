@@ -10,38 +10,37 @@ I was only responsible for the coding of the game.
 class Kirby{
 //Class Variables
 
-PImage Kirby;
-float Kirbyx;
-float Kirbyy;
+  PImage Kirby;
+  float Kirbyx;
+  float Kirbyy;
 
 //Constructor
-Kirby(){
-Kirby = loadImage("Kirby.png");
+  Kirby(){
+  Kirby = loadImage("Kirby.png");
 
-Kirbyx = 330;
-Kirbyy = width/2.0;
-Kirby.resize(171,124);
+  Kirbyx = 330;
+  Kirbyy = width/2.0;
+  Kirby.resize(171,124);
   }
 
 //Member Functions  
-void update()
-{
- Kirbyy = mouseY-62; 
- image(Kirby,Kirbyx,Kirbyy);
+  void update()
+  {
+  Kirbyy = mouseY-62; 
+  image(Kirby,Kirbyx,Kirbyy);
+  }
 }
-}
-class Pie
-{
+class Pie{
 //member variables
-PImage Pie;
-int maxPie;
-float piex;
-float piey;
-float pieRotSpd=0.01;
-float pieAngle;
+  PImage Pie;
+  int maxPie;
+  float piex;
+  float piey;
+  float pieRotSpd=0.01;
+  float pieAngle;
 //constructors
-Pie()
-{
+  Pie()
+  {
 
   maxPie = 8;
   pieAngle = 0;
@@ -49,21 +48,21 @@ Pie()
   Pie.resize(60, 41);
   piex = -Pie.width;
   piey = random(Pie.height,height-Pie.height);
-}
-Pie(float x)
-{
+  }
+  Pie(float x)
+  {
   maxPie = 8;
   pieAngle = 0;
   Pie= loadImage("pie.png");
   Pie.resize(60, 41);
   piex = x;
   piey = random(Pie.height,height-Pie.height);
-}
+  }
 //member functions
-void update()
-{
+  void update()
+  {
   
- pushMatrix();
+  pushMatrix();
   translate(piex+30,piey+20);
   rotate(pieAngle);
   image(Pie,-30,-20);
@@ -73,13 +72,12 @@ void update()
  
   piex+=3;
   
-  
-}
-void pieShrink()
-{
+  }
+  void pieShrink()
+  {
   //Pie.resize(
   
-}
+  }
 
 }
 
@@ -87,16 +85,16 @@ class Spikeball
 {
 //Member variables
 
-PImage Spikeball;
-int maxSpikeball;
-float spikeballx;
-float spikebally;
-float spikeballRotSpd=0.01;
-float spikeballAngle;
+  PImage Spikeball;
+  int maxSpikeball;
+  float spikeballx;
+  float spikebally;
+  float spikeballRotSpd=0.01;
+  float spikeballAngle;
 //Constructors
 
-Spikeball()
-{
+  Spikeball()
+  {
 
   maxSpikeball = 8;
   spikeballAngle = 0;
@@ -104,32 +102,32 @@ Spikeball()
   Spikeball.resize(100, 100);
   spikeballx = -Spikeball.width;
   spikebally = random(Spikeball.height,height-Spikeball.height);
-}
-Spikeball(float x)
-{
+  }
+  Spikeball(float x)
+  {
   maxSpikeball = 8;
   spikeballAngle = 0;
   Spikeball= loadImage("Spikeball.png");
   Spikeball.resize(125, 125);
   spikeballx = x;
   spikebally = random(Spikeball.height,height-Spikeball.height);
-}
+  }
 //Member Functions
-void update()
-{
+  void update()
+  {
   
- pushMatrix();
-  translate(spikeballx+50,spikebally+50);
-  rotate(spikeballAngle);
-  image(Spikeball,-50,-50);
-  popMatrix();
+   pushMatrix();
+   translate(spikeballx+50,spikebally+50);
+   rotate(spikeballAngle);
+   image(Spikeball,-50,-50);
+   popMatrix();
   
-  spikeballAngle += spikeballRotSpd;
+   spikeballAngle += spikeballRotSpd;
  
-  spikeballx+=3;
+   spikeballx+=3;
   
   
-}
+  }
 
 }
 
